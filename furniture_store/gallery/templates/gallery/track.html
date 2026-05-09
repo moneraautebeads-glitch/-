@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع طلبك | منيرة العتيبي للتكييف</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --dark-primary: #2980b9;
+            --bg-color: #f4f9ff;
+            --text-main: #2d3436;
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--bg-color); 
+            margin: 0; 
+            padding: 20px; 
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .track-container { 
+            max-width: 650px; 
+            margin: 40px auto; 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1); 
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .track-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .track-header h1 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Cairo';
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-box button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            background: var(--dark-primary);
+        }
+
+        .order-card {
+            background: #fafafa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-right: 5px solid var(--primary);
+        }
+
+        .product-title {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .order-info {
+            font-size: 14px;
+            color: #636e72;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-pending { background: #ffeaa7; color: #d6a000; }
+        .status-ready { background: #55efc4; color: #00b894; }
+        .status-shipped { background: #81ecec; color: #00cec9; }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            background: #fff5f5;
+            border-radius: 15px;
+            color: #d63031;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #636e72;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-home:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="track-container">
+        <div class="track-header">
+            <h1>📦 تتبع طلب التكييف</h1>
+            <p>أدخل رقم الجوال المستخدم في الطلب لمتابعة حالة التركيب</p>
+        </div>
+
+        <form method="GET" class="search-box">
+            <input type="tel" name="phone" placeholder="05xxxxxxxx" value="{{ phone|default:'' }}" required>
+            <button type="submit">بحث</button>
+        </form>
+
+        {% if orders %}
+            {% for order in orders %}
+            <div class="order-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 class="product-title">{{ order.product.title }}</h3>
+                        <div class="order-info">
+                            <span>📅 تاريخ الطلب:</span>
+                            <span>{{ order.created_at|date:"Y/m/d" }}</span>
+                        </div>
+                        <div class="order-info" style="margin-top: 5px;">
+                            <span>📍 عنوان التركيب:</span>
+                            <span>{{ order.address }}</span>
+                        </div>
+                    </div>
+                    
+                    <span class="status-badge 
+                        {% if order.status == 'pending' %}status-pending
+                        {% elif order.status == 'ready' %}status-ready
+                        {% else %}status-shipped{% endif %}">
+                        {{ order.get_status_display }}
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        {% elif phone %}
+            <div class="no-results">
+                <p>⚠️ لم نجد أي طلبات مسجلة لهذا الرقم. تأكد من إدخال الرقم الصحيح المستخدم أثناء الطلب.</p>
+            </div>
+        {% endif %}
+
+        <a href="/" class="back-home">
+            <span>←</span> العودة لمتجر منيرة العتيبي للتكييف
+        </a>
+    </div>
+
+</body>
+</html>

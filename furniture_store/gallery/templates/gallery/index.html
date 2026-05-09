@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alotabi-beds.shop/" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="منيرة العتيبي للتكييف">
+
+    <meta name="geo.region" content="SA-01" />
+    <meta name="geo.placename" content="Riyadh" />
+    <meta name="geo.position" content="24.6333;46.7167" />
+    <meta name="ICBM" content="24.6333, 46.7167" />
+
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
+    <title>متجر منيرة العتيبي للتكييف | أفضل مكيفات سبليت وشباك بالرياض</title>
+    
+    <meta name="keywords" content="مكيفات, مكيفات الرياض, تركيب مكيفات فوري, صيانة مكيفات, مكيف جري سبليت, مكيف كاريير, مكيفات ماندو, تكييف مركزي, عروض المكيفات الصيفية, تقسيط مكيفات الرياض, فني تكييف, تبريد وتدفئة">
+    <meta name="description" content="تسوق الآن من متجر منيرة العتيبي للتكييف بالرياض. نوفر حلول تبريد ذكية، مكيفات سبليت وشباك بأفضل الأسعار مع تركيب فوري وضمان شامل.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* إعدادات الألوان للهوية الجديدة (تبريد وتكييف) */
+        :root {
+            --primary-blue: #3498db;      /* لون التبريد الأساسي */
+            --dark-blue: #2c3e50;         /* لون الثقة والاستقرار */
+            --ice-blue: #f0f8ff;         /* لون الخلفية البارد */
+            --accent-cyan: #00d2ff;       /* لون النشاط */
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --gray-text: #555555;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* تصفير الإعدادات الافتراضية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* العلم السعودي المرفرف - تصميم مخصص */
+        .flag-container {
+            position: fixed;
+            top: 100px;
+            left: 25px;
+            z-index: 999;
+            perspective: 1000px;
+        }
+
+        .saudi-flag {
+            width: 70px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: waveFlag 4s infinite ease-in-out;
+            transform-origin: left center;
+        }
+
+        @keyframes waveFlag {
+            0%, 100% { transform: rotateY(0deg) rotateZ(0deg); }
+            50% { transform: rotateY(15deg) rotateZ(2deg); }
+        }
+
+        /* الهيدر والقائمة العلوية */
+        header {
+            background-color: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            color: var(--white);
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+            position: relative;
+        }
+
+        .logo span::after {
+            content: '❄️';
+            font-size: 14px;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-track-btn {
+            background: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 25px;
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        /* قسم البطل (Hero Section) */
+        /* إعدادات واجهة البطل - منع التكرار وضبط القياس */
+.hero {
+    height: 60vh; /* ارتفاع متوازن ليناسب أبعاد الصورة على الجوال */
+    background-color: #001d3d; /* لون خلفية كحلي يملأ الفراغات الجانبية */
+    
+    /* رابط الصورة */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                      url('https://i.pinimg.com/736x/57/d6/47/57d64756cb55bb38a4070b201017b5e3.jpg');
+
+    /* الإعدادات التي تمنع التكرار وتضمن الوضوح */
+    background-repeat: no-repeat !important; 
+    background-size: contain !important; /* هذا الأمر يمنع تمدد الصورة ويظهرها كاملة */
+    background-position: center center !important; /* وضع الصورة في منتصف الشاشة */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 20px;
+    margin-top: 70px; /* مسافة كافية لعدم التداخل مع الهيدر */
+}
+
+/* تحسين استجابة النص على الجوال */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh; /* تقليل الارتفاع أكثر على الشاشات الصغيرة جداً */
+        margin-top: 60px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+}
+
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: 2px solid var(--primary-blue);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* قسم المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 80px 8%;
+            background: var(--ice-blue);
+        }
+
+        .feature-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-box:hover { transform: translateY(-10px); }
+
+        .feature-box i {
+            font-size: 40px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* شبكة المكيفات - معرض المنتجات */
+        .section-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--dark-blue);
+            font-family: 'Amiri', serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 100px;
+            height: 5px;
+            background: var(--primary-blue);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            padding: 40px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .item-card {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .item-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 50px rgba(52, 152, 219, 0.15);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        .item-img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background: #fff;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .item-info {
+            padding: 30px;
+            text-align: right;
+            border-top: 1px solid #f9f9f9;
+        }
+
+        .item-info h3 {
+            font-size: 22px;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .item-price {
+            font-size: 26px;
+            color: var(--primary-blue);
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .item-price span {
+            font-size: 14px;
+            color: #999;
+            margin-right: 5px;
+        }
+
+        /* مفتاح الربط create_order - لا يتم تغييره */
+        .btn-order {
+            display: block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white) !important;
+            padding: 16px;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            text-align: center;
+            transition: var(--transition);
+            font-size: 18px;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-order:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(52, 152, 219, 0.5);
+        }
+
+        /* قسم الرؤية والمعلومات */
+        .vision-section {
+            display: flex;
+            align-items: center;
+            padding: 100px 8%;
+            background: var(--dark-blue);
+            color: white;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .vision-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .vision-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+
+        .vision-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .vision-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .vision-image img {
+            max-width: 400px;
+            width: 100%;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: #1a1a1a;
+            color: #bdc3c7;
+            padding: 80px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            width: 40px;
+            height: 3px;
+            background: var(--primary-blue);
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-blue);
+            padding-right: 5px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item b {
+            color: var(--primary-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        .dev-credit {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* قسم الخدمة الخاصة بالواتساب */
+        .cta-bottom {
+            background: #f4f9ff;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .cta-bottom h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .cta-bottom p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .whatsapp-btn-large {
+            background: #25d366;
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 992px) {
+            header { padding: 15px 5%; }
+            .hero h1 { font-size: 3rem; }
+            .gallery-container { padding: 40px 5%; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* يفضل إضافة قائمة جوال لاحقاً */
+            .hero h1 { font-size: 2.5rem; }
+            .vision-section { text-align: center; padding: 60px 5%; }
+            .flag-container { top: 85px; left: 10px; }
+            .saudi-flag { width: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flag-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg" class="saudi-flag" alt="علم المملكة العربية السعودية">
+    </div>
+
+    <header>
+        <a href="/" class="logo">منيرة العتيبي <span>للتكييف</span></a>
+        <nav>
+            <ul>
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="#gallery">المكيفات</a></li>
+                <li><a href="#about">عن المتجر</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+                <li><a href="{% url 'track' %}" class="nav-track-btn">تتبع الطلب 📦</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>متجر منيرة العتيبي للتكييف ❄️</h1>
+        <p>نمنحك الانتعاش الذي تستحقه في حر الصيف. أحدث موديلات المكيفات العالمية (سبليت، شباك، كاسيت) مع خدمة التركيب الاحترافية والضمان المعتمد بالرياض.</p>
+        <div class="cta-container">
+            <a href="#gallery" class="cta-button">تصفح المكيفات الآن</a>
+        </div>
+    </section>
+
+    <div class="features-grid">
+        <div class="feature-box">
+            <i>🚚</i>
+            <h3>توصيل فوري</h3>
+            <p>نصلك في أي مكان داخل الرياض خلال 24 ساعة من طلب المكيف.</p>
+        </div>
+        <div class="feature-box">
+            <i>🛠️</i>
+            <h3>تركيب احترافي</h3>
+            <p>طاقم فني متخصص لتركيب المكيفات بأعلى معايير الجودة والأمان.</p>
+        </div>
+        <div class="feature-box">
+            <i>🛡️</i>
+            <h3>ضمان شامل</h3>
+            <p>جميع أجهزتنا تأتي مع ضمان الوكيل المعتمد لراحتك التامة.</p>
+        </div>
+        <div class="feature-box">
+            <i>💳</i>
+            <h3>أفضل الأسعار</h3>
+            <p>نوفر لك أقل الأسعار في السوق مع خيارات تقسيط ميسرة.</p>
+        </div>
+    </div>
+
+    <div class="section-header" id="gallery">
+        <h2>أحدث أجهزة التكييف</h2>
+    </div>
+
+    <div class="gallery-container">
+        {% for item in furniture_items %}
+        <div class="item-card">
+            <span class="item-badge">توصيل مجاني 🚛</span>
+            <img src="{{ item.main.image.url }}" class="item-img" alt="مكيف {{ item.title }}">
+
+            <div class="item-info">
+                <h3>{{ item.title }}</h3>
+                <p class="item-price">{{ item.price }} <span>ريال</span></p>
+                
+                <a href="{% url 'create_order' item.id %}" class="btn-order">
+                    احجز موعد التركيب الآن
+                </a>
+                
+                <a href="https://wa.me/966510634135?text=أريد استفسار عن مكيف {{ item.title }}" style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:15px; color:#25d366; text-decoration:none; font-weight:600;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18"> استفسار واتساب
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <div style="text-align: center; grid-column: 1 / -1; padding: 50px;">
+            <p style="font-size: 20px; color: #888;">جاري تحميل أحدث الموديلات من المخزن... ❄️</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <section class="vision-section" id="about">
+        <div class="vision-text">
+            <h2>خبراء التبريد في المملكة</h2>
+            <p>في متجر منيرة العتيبي، نفخر بكوننا الوجهة الأولى لكل من يبحث عن الجودة والبرودة الفائقة. نحن لا نبيع أجهزة فقط، بل نقدم استشارات فنية متكاملة لاختيار الجهاز المناسب لمساحة منزلك أو مكتبك لضمان توفير الكهرباء وأعلى كفاءة تبريد.</p>
+            <p>خدماتنا تشمل توريد وتركيب المكيفات المركزية والسبليت للمشاريع الكبرى والمنازل، مع تقديم عقود صيانة دورية تضمن لك هواءً نقياً طوال العام.</p>
+        </div>
+        <div class="vision-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Saudi_Vision_2030_Logo.svg/1200px-Saudi_Vision_2030_Logo.svg.png" alt="رؤية المملكة 2030">
+        </div>
+    </section>
+
+    <section class="cta-bottom">
+        <h2>هل تحتاج لاستشارة فنية؟ ❄️</h2>
+        <p>فريقنا مستعد لمساعدتك في حساب الأحمال الحرارية واختيار سعة المكيف المناسبة لغرفتك مجاناً.</p>
+        <a href="https://wa.me/966510634135?text=أريد+استشارة+فنية+لاختيار+مكيف" class="whatsapp-btn-large">
+            تحدث مع خبير الآن عبر واتساب
+        </a>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>عن متجرنا</h3>
+                <p>متجر منيرة العتيبي للتكييف، فخامة في الاختيار وقوة في التبريد. نخدم مدينة الرياض وضواحيها بأفضل الكوادر الفنية.</p>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">سياسة الضمان</a></li>
+                    <li><a href="#">طرق الشحن والتوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="{% url 'track' %}">تتبع حالة التركيب</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>معلومات الاتصال</h3>
+                <div class="contact-item">
+                    <b>الموقع:</b>
+                    <span>المملكة العربية السعودية، الرياض، حراج بن قاسم</span>
+                </div>
+                <div class="contact-item">
+                    <b>الهاتف:</b>
+                    <span dir="ltr">+966 51 063 4135</span>
+                </div>
+                <div class="contact-item">
+                    <b>البريد:</b>
+                    <span>moneraautebeads@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة © 2026 | متجر منيرة العتيبي للتكييف</p>
+            <p>تم التطوير بواسطة المهندس <a href="https://wa.me/201114710712" class="dev-link">حسين سرحان</a></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/966510634135" class="whatsapp-float">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="white"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.737 5.58 2.137 8l-2.137 8 8-2.137c2.42 1.4 5.175 2.137 8 2.137 8.837 0 16-7.163 16-16s-7.163-16-16-16zm8.29 22.15c-.34.95-1.7 1.74-2.73 1.85-.71.07-1.63.1-2.61-.21-4.01-1.3-6.61-5.38-6.81-5.65-.2-.27-1.6-2.13-1.6-4.06 0-1.93 1.01-2.88 1.37-3.27.36-.39.79-.49 1.05-.49.26 0 .52.01.75.02.24.01.47-.04.74.62.27.66.92 2.26 1 2.43.08.17.13.37.02.59-.11.22-.16.36-.33.56-.17.2-.35.45-.5.61-.17.17-.35.35-.15.7.2.35.88 1.45 1.89 2.35 1.3 1.16 2.39 1.52 2.73 1.69.34.17.53.14.73-.08.2-.22.85-.99 1.08-1.33.23-.34.46-.28.78-.16.32.12 2.03 1 2.38 1.18.35.18.59.27.67.41.08.14.08.82-.26 1.77z"/></svg>
+    </a>
+
+</body>
+</html>

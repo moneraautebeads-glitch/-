@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد طلب المكيف - متجر منيرة العتيبي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db; /* لون التبريد */
+            --dark-primary: #2980b9;
+            --black: #1a1a1a;
+            --gray: #f9f9f9;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            color: #333;
+        }
+
+        .order-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 25px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+            width: 90%; 
+            max-width: 450px; 
+            text-align: center; 
+            position: relative;
+            border-top: 8px solid var(--primary);
+        }
+
+        .order-container::before {
+            content: "❄️";
+            font-size: 30px;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        h2 { 
+            font-family: 'Amiri', serif;
+            color: var(--black); 
+            margin-bottom: 10px; 
+            font-size: 28px;
+        }
+
+        p.product-name {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        form { display: flex; flex-direction: column; gap: 20px; }
+
+        .input-group {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #666;
+            margin-right: 5px;
+        }
+
+        input, textarea { 
+            padding: 15px; 
+            border: 2px solid #eee; 
+            border-radius: 12px; 
+            font-size: 16px; 
+            text-align: right; 
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+            background-color: #f5faff;
+        }
+
+        .delivery-note {
+            font-size: 12px;
+            color: #888;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        button { 
+            background: linear-gradient(90deg, var(--primary), var(--dark-primary)); 
+            color: white; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-size: 20px; 
+            font-weight: bold; 
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+        }
+
+        button:active { transform: translateY(0); }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-container">
+        <h2>تأكيد طلب المكيف</h2>
+        <p class="product-name">الموديل: {{ product.title }}</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label>الاسم الكريم</label>
+                <input type="text" name="customer_name" placeholder="اكتب اسمك الثلاثي" required>
+            </div>
+
+            <div class="input-group">
+                <label>رقم التواصل (واتساب)</label>
+                <input type="tel" name="customer_phone" placeholder="05xxxxxxxx" required>
+            </div>
+
+            <div class="input-group">
+                <label>عنوان التركيب</label>
+                <textarea name="address" placeholder="المدينة، الحي، اسم الشارع" rows="3" required></textarea>
+                <span class="delivery-note">* سيتم التواصل معك لتأكيد موعد التوصيل والتركيب الفوري</span>
+            </div>
+
+            <button type="submit">تأكيد الطلب عبر الواتساب 📦</button>
+        </form>
+
+        <p class="footer-text">بضغطك على تأكيد، سيتم توجيهك للمحادثة المباشرة مع فريق المبيعات والتركيب.</p>
+    </div>
+</body>
+</html>
